@@ -1,11 +1,8 @@
 "use client";
-
-import Image from "next/image";
-import Link from "next/link";
 import { useState, useEffect } from "react";
-import moment from "moment";
 import { Blog } from "../../../types/blog";
 import { getAllBlogs } from "../../../sanity/sanity-utils";
+import BlogCard from "./components/cards/BlogCard";
 
 export default function Home() {
   const [blogsData, setBlogsData] = useState<Blog[]>([]);
@@ -65,30 +62,7 @@ export default function Home() {
       {filteredBlogs.length > 0 ? (
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredBlogs.map((blog) => (
-            <Link
-              href={`/blogs/${blog.slug}`}
-              key={blog._id}
-              className="block overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition"
-            >
-              <div className="relative">
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  width={400}
-                  height={300}
-                  className="object-cover w-full h-48"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-4">
-                  <h4 className="text-xl font-semibold">{blog.title}</h4>
-                  <p className="text-sm">
-                    By {blog.author} on {moment(blog._createdAt).format("ll")}
-                  </p>
-                </div>
-              </div>
-              <div className="p-4">
-                <p className="text-gray-700">{blog.description}</p>
-              </div>
-            </Link>
+            <BlogCard blog={blog} key={blog._id}/>
           ))}
         </div>
       ) : (

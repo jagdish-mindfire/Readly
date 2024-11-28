@@ -14,7 +14,7 @@ export default async function Project(props: { params: tParams }) {
           {blogData.title}
         </h1>
       </header>
-
+    
       <div className="mt-10">
         <Image
           src={blogData.image}
@@ -26,7 +26,6 @@ export default async function Project(props: { params: tParams }) {
       </div>
       <div className="mt-8 text-lg text-black ">
         <PortableText value={blogData?.content}  />
-
       </div>
 
     </div>

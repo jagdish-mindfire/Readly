@@ -20,7 +20,7 @@ export default async function RootLayout({
         <header className="flex flex-col sm:flex-row items-center justify-between mb-8">
           <Link
             href="/"
-            className="bg-gradient-to-r from-orange-400 via-red-500 to-purple-900 bg-clip-text text-transparent text-3xl font-extrabold mb-4 sm:mb-0"
+            className="bg-gradient-to-r from-red-800 via-blue-500 to-purple-800 bg-clip-text text-transparent text-3xl font-extrabold mb-4 sm:mb-0"
           >
             Home
           </Link>
