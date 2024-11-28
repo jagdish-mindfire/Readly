@@ -1,7 +1,7 @@
 export type Page = {
     title: string;
     slug: string;
-    content: string;
+    content: any;
     _id:string,
     _createdAt:Date,
 }

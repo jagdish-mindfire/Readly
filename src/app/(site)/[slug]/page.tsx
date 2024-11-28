@@ -1,21 +1,20 @@
 import { PortableText } from "next-sanity";
 import { getPageData } from "../../../../sanity/sanity-utils";
+type tParams = Promise<{ slug: string }>;
 
-type Params = {
-    params : {
-        slug:string;
-    }
-}
-export default  async function Page({params}:Params){
-    const parameters = await params;
-    const slug = parameters.slug;
-    const pageData = await getPageData(slug);
-    return (<>
-    <div>
-        <h1 className="text-3xl mt-10 font-extrabold">{pageData.title}</h1>
-        <p className="mt-4">
+export default async function Page(props: { params: tParams }) {
+  const { slug } = await props.params;
+
+  const pageData = await getPageData(slug);
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-10">
+      <h1 className="text-4xl sm:text-5xl font-extrabold mt-10 text-center">
+        {pageData.title}
+      </h1>
+      <div className="mt-8 prose prose-lg mx-auto">
         <PortableText value={pageData.content} />
-        </p>
+      </div>
     </div>
-    </>);
+  );
 }
