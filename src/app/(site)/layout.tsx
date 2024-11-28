@@ -16,19 +16,25 @@ export default async function RootLayout({
   const pages = await getAllPages();
   return (
     <html lang="en">
-      <body
-        className={"max-w-3xl mx-auto py-10"}
-      >
-        <header className="flex items-center justify-between">
-          <Link href={"/"} className="bg-gradient-to-r from-orange-400 via-red-500 to-purple-900 bg-clip-text text-transparent text-lg font-bold">Home
+      <body className="max-w-3xl mx-auto py-10 px-4">
+        <header className="flex flex-col sm:flex-row items-center justify-between mb-8">
+          <Link
+            href="/"
+            className="bg-gradient-to-r from-orange-400 via-red-500 to-purple-900 bg-clip-text text-transparent text-3xl font-extrabold mb-4 sm:mb-0"
+          >
+            Home
           </Link>
-          <div className="flex items-center gap-3">
-          {pages.map(page=>(
-            <Link key={page._id} href={`/${page.slug}`} className="text-right ml-4 text-gray-600 hover:text-gray-800">
-              {page.title}
-            </Link>
-          ))}
-          </div>
+          <nav className="flex flex-wrap items-center gap-4">
+            {pages.map((page) => (
+              <Link
+                key={page._id}
+                href={`/${page.slug}`}
+                className="text-gray-600 hover:text-gray-800 text-lg font-medium transition-colors duration-200"
+              >
+                {page.title}
+              </Link>
+            ))}
+          </nav>
         </header>
         {children}
       </body>

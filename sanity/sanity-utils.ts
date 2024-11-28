@@ -10,6 +10,7 @@ export async function getProjects():Promise<Project[]>{
         _id,
         _createdAt,
         name,
+        title,
         "slug":slug.current,
         "image": image.asset->url,
         url,
@@ -25,7 +26,10 @@ export async function getProject(slug : string):Promise<Project>{
         _createdAt,
         title,
         "slug":slug.current,
-        content
+        content,
+        "image": image.asset->url,
+        url,
+        name,
         }`
         ,{slug})  
 }
